@@ -109,6 +109,7 @@ const Form = styled.form`
     resize: none;
     border: none;
     width: 50vw;
+    height: 40vh;
     &:focus {
       outline: none;
     }
