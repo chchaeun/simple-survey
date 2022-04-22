@@ -15,6 +15,9 @@ function App() {
   };
   const onClick = async (e) => {
     e.preventDefault();
+    if (!name || !text) {
+      return;
+    }
     await addDoc(collection(dbService, `survey`), {
       name,
       text,
