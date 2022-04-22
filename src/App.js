@@ -15,9 +15,7 @@ function App() {
   };
   const onClick = async (e) => {
     e.preventDefault();
-    if (!name || !text) {
-      return;
-    }
+
     await addDoc(collection(dbService, `survey`), {
       name,
       text,
@@ -37,14 +35,20 @@ function App() {
         무엇이든 물어봐!
         <img src={TitleImg} />
       </AppTitle>
-      <Form>
-        <input value={name} onChange={onNameChange} placeholder="너의 이름" />
+      <Form onSubmit={onClick}>
+        <input
+          value={name}
+          onChange={onNameChange}
+          placeholder="너의 이름"
+          required
+        />
         <textarea
+          required
           value={text}
           onChange={onTextChange}
           placeholder="교생쌤에게 물어보고 싶은 것, 하고 싶은 말, 뭐든 자유롭게!"
         />
-        <button onClick={onClick}>제출</button>
+        <button style={{ cursor: "pointer" }}>제출</button>
       </Form>
     </div>
   );
